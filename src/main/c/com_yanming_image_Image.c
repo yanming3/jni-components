@@ -1,24 +1,24 @@
-#include "com_yanming_image_ImageConverter.h"
+#include "com_yanming_image_Image.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <wand/magick_wand.h>
 #include "magick/enum_strings.h"
 
-JNIEXPORT void JNICALL Java_com_yanming_image_ImageConverter_init
+JNIEXPORT void JNICALL Java_com_yanming_image_Image_init
   (JNIEnv *env, jobject obj)
   {
         InitializeMagick(NULL);
   }
 
-JNIEXPORT void JNICALL Java_com_yanming_image_ImageConverter_destroy
+JNIEXPORT void JNICALL Java_com_yanming_image_Image_destroy
   (JNIEnv *env, jobject obj)
   {
          DestroyMagick();
   }
 
 
-JNIEXPORT jlong JNICALL Java_com_yanming_image_ImageConverter_newImageHandle
+JNIEXPORT jlong JNICALL Java_com_yanming_image_Image_newImageHandle
   (JNIEnv *env, jobject obj)
   {
         MagickWand *magick_wand;
@@ -27,14 +27,14 @@ JNIEXPORT jlong JNICALL Java_com_yanming_image_ImageConverter_newImageHandle
   }
 
 
-JNIEXPORT void JNICALL Java_com_yanming_image_ImageConverter_destroyImageHandle
+JNIEXPORT void JNICALL Java_com_yanming_image_Image_destroyImageHandle
   (JNIEnv *env, jobject obj, jlong hd)
   {
         DestroyMagickWand((MagickWand*)hd);
   }
 
 
-JNIEXPORT jlong JNICALL Java_com_yanming_image_ImageConverter_getHeight
+JNIEXPORT jlong JNICALL Java_com_yanming_image_Image_getHeight
   (JNIEnv *env, jobject obj, jlong hd)
   {
         unsigned long h;
@@ -43,7 +43,7 @@ JNIEXPORT jlong JNICALL Java_com_yanming_image_ImageConverter_getHeight
   }
 
 
-JNIEXPORT jlong JNICALL Java_com_yanming_image_ImageConverter_getWidth
+JNIEXPORT jlong JNICALL Java_com_yanming_image_Image_getWidth
   (JNIEnv *env, jobject obj, jlong hd)
   {
         unsigned long w;
@@ -52,7 +52,7 @@ JNIEXPORT jlong JNICALL Java_com_yanming_image_ImageConverter_getWidth
   }
 
 
-JNIEXPORT jstring JNICALL Java_com_yanming_image_ImageConverter_getFormat
+JNIEXPORT jstring JNICALL Java_com_yanming_image_Image_getFormat
   (JNIEnv *env, jobject obj, jlong hd)
   {
         const char* tStr=MagickGetImageFormat((MagickWand*)hd);
@@ -61,7 +61,7 @@ JNIEXPORT jstring JNICALL Java_com_yanming_image_ImageConverter_getFormat
   }
 
 
-JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_setFormat
+JNIEXPORT jint JNICALL Java_com_yanming_image_Image_setFormat
   (JNIEnv *env, jobject obj, jlong hd, jstring tStr)
   {
         MagickPassFail status = MagickPass;
@@ -79,7 +79,7 @@ JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_setFormat
         return (jint)(status == MagickPass ? 0 : 1);
   }
 
-JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_setCompressQuality
+JNIEXPORT jint JNICALL Java_com_yanming_image_Image_setCompressQuality
   (JNIEnv *env, jobject obj, jlong hd, jlong quality)
   {
         MagickPassFail status = MagickPass;
@@ -95,7 +95,7 @@ JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_setCompressQuality
         return (jint)(status == MagickPass ? 0 : 1);
   }
 
-JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_setBackgroundColor
+JNIEXPORT jint JNICALL Java_com_yanming_image_Image_setBackgroundColor
   (JNIEnv *env, jobject obj, jlong hd, jstring color)
   {
         const char* c=(*env)->GetStringUTFChars(env,color,0);
@@ -118,7 +118,7 @@ JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_setBackgroundColor
   }
 
 
-JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_setBorderColor
+JNIEXPORT jint JNICALL Java_com_yanming_image_Image_setBorderColor
   (JNIEnv *env, jobject obj, jlong hd, jstring color)
   {
           const char* c=(*env)->GetStringUTFChars(env,color,0);
@@ -141,7 +141,7 @@ JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_setBorderColor
   }
 
 
-JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_setDepth
+JNIEXPORT jint JNICALL Java_com_yanming_image_Image_setDepth
   (JNIEnv *env, jobject obj, jlong hd, jlong depth)
   {
         MagickPassFail status = MagickPass;
@@ -158,7 +158,7 @@ JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_setDepth
   }
 
 
-JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_setGravity
+JNIEXPORT jint JNICALL Java_com_yanming_image_Image_setGravity
   (JNIEnv *env, jobject obj, jlong hd, jstring gravity)
   {
         const char* g=(*env)->GetStringUTFChars(env,gravity,0);
@@ -176,7 +176,7 @@ JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_setGravity
          return (jint)(status == MagickPass ? 0 : 1);
   }
 
-JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_readImage
+JNIEXPORT jint JNICALL Java_com_yanming_image_Image_readImage
   (JNIEnv *env, jobject obj, jlong hd,jstring inFile)
   {
         const char* f=(*env)->GetStringUTFChars(env,inFile,0);
@@ -196,7 +196,7 @@ JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_readImage
   }
 
 
-JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_readImageBlob
+JNIEXPORT jint JNICALL Java_com_yanming_image_Image_readImageBlob
   (JNIEnv *env, jobject obj,jlong hd, jbyteArray dArray, jlong len)
   {
         MagickPassFail status = MagickPass;
@@ -215,7 +215,7 @@ JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_readImageBlob
   }
 
 
-JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_writeImage
+JNIEXPORT jint JNICALL Java_com_yanming_image_Image_writeImage
   (JNIEnv *env, jobject obj, jlong hd, jstring outFile)
   {
         const char* f=(*env)->GetStringUTFChars(env,outFile,0);
@@ -234,7 +234,7 @@ JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_writeImage
   }
 
 
-JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_strip
+JNIEXPORT jint JNICALL Java_com_yanming_image_Image_strip
   (JNIEnv *env, jobject obj, jlong hd)
   {
     MagickPassFail status =MagickStripImage((MagickWand*)hd);
@@ -250,7 +250,7 @@ JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_strip
   }
 
 
-JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_crop
+JNIEXPORT jint JNICALL Java_com_yanming_image_Image_crop
   (JNIEnv *env, jobject obj, jlong hd, jlong width, jlong height, jlong x, jlong y)
   {
         MagickPassFail status =MagickCropImage((MagickWand*)hd, (const unsigned long)width,(const unsigned long)height, (const long)x, (const long) y);
@@ -266,7 +266,7 @@ JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_crop
   }
 
 
-JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_scale
+JNIEXPORT jint JNICALL Java_com_yanming_image_Image_scale
   (JNIEnv *env, jobject obj, jlong hd, jlong columns, jlong rows)
   {
         MagickPassFail status =MagickScaleImage((MagickWand*)hd,(const unsigned long)columns,(const unsigned long)rows);
@@ -282,7 +282,7 @@ JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_scale
   }
 
 
-JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_sample
+JNIEXPORT jint JNICALL Java_com_yanming_image_Image_sample
   (JNIEnv *env, jobject obj, jlong hd, jlong columns,jlong rows)
   {
         MagickPassFail status =MagickSampleImage((MagickWand*)hd,(const unsigned long)columns,(const unsigned long)rows);
@@ -299,7 +299,7 @@ JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_sample
   }
 
 
-JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_sharpen
+JNIEXPORT jint JNICALL Java_com_yanming_image_Image_sharpen
   (JNIEnv *env, jobject obj, jlong hd, jdouble radius, jdouble sigma){
         MagickPassFail status=MagickPass;
         status=MagickSharpenImage((MagickWand*)hd,(const double)radius,(const double)sigma);
@@ -316,7 +316,7 @@ JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_sharpen
   }
 
 
-JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_rotate
+JNIEXPORT jint JNICALL Java_com_yanming_image_Image_rotate
   (JNIEnv *env, jobject obj, jlong hd,jdouble degrees,jstring bStr){
         MagickPassFail status=MagickPass;
         const char* b=(*env)->GetStringUTFChars(env,bStr,0);
@@ -339,7 +339,7 @@ JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_rotate
   }
 
 
-JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_roll
+JNIEXPORT jint JNICALL Java_com_yanming_image_Image_roll
   (JNIEnv *env, jobject obj, jlong hd, jlong xOffset,jlong yOffset){
         MagickPassFail status=MagickPass;
         status=MagickRollImage((MagickWand*)hd,(const long)xOffset,(const long)yOffset);
@@ -354,7 +354,7 @@ JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_roll
 
         return (jint)(status == MagickPass ? 0 : 1);
   }
-JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_extent
+JNIEXPORT jint JNICALL Java_com_yanming_image_Image_extent
   (JNIEnv *env, jobject obj, jlong hd, jlong width, jlong height, jlong x, jlong y)
   {
         MagickPassFail status=MagickPass;
@@ -371,7 +371,7 @@ JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_extent
         return (jint)(status == MagickPass ? 0 : 1);
   }
 
-JNIEXPORT jint JNICALL Java_com_yanming_image_ImageConverter_resize
+JNIEXPORT jint JNICALL Java_com_yanming_image_Image_resize
   (JNIEnv *env, jobject obj, jlong hd, jlong columns,jlong rows, jdouble blur,jstring f){
         const char* filterStr=(*env)->GetStringUTFChars(env,f,0);
         const FilterTypes filter=StringToFilterTypes(filterStr);

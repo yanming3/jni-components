@@ -3,16 +3,11 @@ package com.yanming.image;
 /**
  * Created by allan on 16/9/21.
  */
-public class ImageConverter {
+public class Image extends NativeLoader {
 
     private long pointer;
 
-
-    public ImageConverter() {
-        this.pointer = newImageHandle();
-    }
-
-    public ImageConverter(String inFile) {
+    public Image(String inFile) {
         this.pointer = newImageHandle();
         this.readImage(pointer, inFile);
     }
@@ -60,8 +55,9 @@ public class ImageConverter {
     public void resize(long columns, long rows, long blur) {
         this.resize(this.pointer, columns, rows, blur, "Lanczos");
     }
-    public  void extent(long width, long height, long x, long y){
-            this.extent(this.pointer,width,height,x,y);
+
+    public void extent(long width, long height, long x, long y) {
+        this.extent(this.pointer, width, height, x, y);
     }
 
     public void writeImage(String file) {
@@ -69,6 +65,7 @@ public class ImageConverter {
     }
 
     public void close() {
+        this.destroyImageHandle(this.pointer);
         this.destroy();
     }
 
