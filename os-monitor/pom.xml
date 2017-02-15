@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>jni-parent</artifactId>
+        <groupId>com.yam</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>osmonitor</artifactId>
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>mac</id>
+            <activation>
+                <os>
+                    <family>mac</family>
+                </os>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.fusesource.hawtjni</groupId>
+                        <artifactId>maven-hawtjni-plugin</artifactId>
+                        <version>1.14</version>
+                        <executions>
+                            <execution>
+                                <id>build-native-lib</id>
+                                <configuration>
+                                    <nativeSourceDirectory>${project.basedir}/src/main/c</nativeSourceDirectory>
+                                    <libDirectory>${project.build.outputDirectory}</libDirectory>
+                                    <!-- We use Maven's artifact classifier instead.
+                                         This hack will make the hawtjni plugin to put the native library
+                                         under 'META-INF/native' rather than 'META-INF/native/${platform}'. -->
+                                    <platform>.</platform>
+                                    <forceConfigure>true</forceConfigure>
+                                    <forceAutogen>true</forceAutogen>
+                                    <verbose>true</verbose>
+                                    <configureArgs>
+                                        <arg>--enable-shared</arg>
+                                    </configureArgs>
+                                </configuration>
+                                <goals>
+                                    <goal>generate</goal>
+                                    <goal>build</goal>
+                                    <!--<goal>package-jar</goal>
+                                    <goal>package-source</goal>-->
+                                </goals>
+                                <phase>compile</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>linux</id>
+            <activation>
+                <os>
+                    <family>linux</family>
+                </os>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.fusesource.hawtjni</groupId>
+                        <artifactId>maven-hawtjni-plugin</artifactId>
+                        <version>1.14</version>
+                        <executions>
+                            <execution>
+                                <id>build-native-lib</id>
+                                <configuration>
+                                    <nativeSourceDirectory>${project.basedir}/src/main/c</nativeSourceDirectory>
+                                    <libDirectory>${project.build.outputDirectory}</libDirectory>
+                                    <!-- We use Maven's artifact classifier instead.
+                                         This hack will make the hawtjni plugin to put the native library
+                                         under 'META-INF/native' rather than 'META-INF/native/${platform}'. -->
+                                    <platform>.</platform>
+                                    <forceConfigure>true</forceConfigure>
+                                    <forceAutogen>true</forceAutogen>
+                                    <verbose>true</verbose>
+                                    <configureArgs>
+                                        <arg>-w</arg>
+                                        <arg>--enable-shared</arg>
+                                    </configureArgs>
+                                </configuration>
+                                <goals>
+                                    <goal>generate</goal>
+                                    <goal>build</goal>
+                                    <!--<goal>package-jar</goal>
+                                    <goal>package-source</goal>-->
+                                </goals>
+                                <phase>compile</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

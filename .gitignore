@@ -1,4 +1,6 @@
 /target
-/GraphicsMagick.iml
+/jni-components.iml
 /.idea
-/out
+/os-monitor/os-monitor.iml
+/*/target
+/GraphicsMagick/GraphicsMagick.iml

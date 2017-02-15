@@ -1,4 +1,4 @@
-#include "com_yanming_image_ImageUtils.h"
+#include "com_yam_image_ImageUtils.h"
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
@@ -6,7 +6,7 @@
 #include <magick/api.h>
 
 
-JNIEXPORT void JNICALL Java_com_yanming_image_ImageUtils_process
+JNIEXPORT void JNICALL Java_com_yam_image_ImageUtils_process
   (JNIEnv *env, jclass cls, jint count, jobjectArray args){
         char ** p_arg=NULL;
         p_arg=(char**)calloc((int)count,sizeof(char*));

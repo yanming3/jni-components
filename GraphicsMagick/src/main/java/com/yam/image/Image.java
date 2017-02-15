@@ -1,4 +1,4 @@
-package com.yanming.image;
+package com.yam.image;
 
 /**
  * Created by allan on 16/9/21.

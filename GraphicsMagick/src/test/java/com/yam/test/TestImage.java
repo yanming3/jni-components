@@ -1,15 +1,14 @@
-package com.yangming.test;
+package com.yam.test;
 
-import com.yanming.image.Image;
-import com.yanming.image.ImageUtils;
+import com.yam.image.Image;
+import com.yam.image.ImageUtils;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by allan on 17/2/14.
+ * Created by allan on 17/2/15.
  */
 public class TestImage {
     @Test
@@ -23,14 +22,13 @@ public class TestImage {
         image.close();
     }
 
-    @Test
+    //@Test
     public void testExternal() throws Exception {
         String ROOT = "/Users/allan/Downloads/";
 
         List<String> paras1 = Arrays.asList(new String[]{"gm", "convert", "/Users/allan/Downloads/1.jpg", "-thumbnail", "300x300^", "-gravity", "center", "-extent", "300x300"});
-        List<String> paras = new ArrayList<String>(paras1);
-        paras.add(ROOT + "1_1.jpg");
-        ProcessBuilder builder = new ProcessBuilder(paras);
+        paras1.add(ROOT + "1_1.jpg");
+        ProcessBuilder builder = new ProcessBuilder(paras1);
         builder.start();
     }
 }

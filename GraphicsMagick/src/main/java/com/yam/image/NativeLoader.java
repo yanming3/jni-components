@@ -1,4 +1,4 @@
-package com.yanming.image;
+package com.yam.image;
 
 import java.io.*;
 import java.net.URL;
