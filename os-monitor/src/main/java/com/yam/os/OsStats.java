@@ -13,4 +13,6 @@ public class OsStats extends  NativeLoader{
 
     public native static List<NetInfo> getNetInfo();
 
+    public native static List<DiskInfo> getDiskInfo();
+
 }

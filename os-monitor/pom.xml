@@ -21,49 +21,6 @@
 
     <profiles>
         <profile>
-            <id>mac</id>
-            <activation>
-                <os>
-                    <family>mac</family>
-                </os>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.fusesource.hawtjni</groupId>
-                        <artifactId>maven-hawtjni-plugin</artifactId>
-                        <version>1.14</version>
-                        <executions>
-                            <execution>
-                                <id>build-native-lib</id>
-                                <configuration>
-                                    <nativeSourceDirectory>${project.basedir}/src/main/c</nativeSourceDirectory>
-                                    <libDirectory>${project.build.outputDirectory}</libDirectory>
-                                    <!-- We use Maven's artifact classifier instead.
-                                         This hack will make the hawtjni plugin to put the native library
-                                         under 'META-INF/native' rather than 'META-INF/native/${platform}'. -->
-                                    <platform>.</platform>
-                                    <forceConfigure>true</forceConfigure>
-                                    <forceAutogen>true</forceAutogen>
-                                    <verbose>true</verbose>
-                                    <configureArgs>
-                                        <arg>--enable-shared</arg>
-                                    </configureArgs>
-                                </configuration>
-                                <goals>
-                                    <goal>generate</goal>
-                                    <goal>build</goal>
-                                    <!--<goal>package-jar</goal>
-                                    <goal>package-source</goal>-->
-                                </goals>
-                                <phase>compile</phase>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
             <id>linux</id>
             <activation>
                 <os>
@@ -90,7 +47,6 @@
                                     <forceAutogen>true</forceAutogen>
                                     <verbose>true</verbose>
                                     <configureArgs>
-                                        <arg>-w</arg>
                                         <arg>--enable-shared</arg>
                                     </configureArgs>
                                 </configuration>

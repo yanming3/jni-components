@@ -94,13 +94,9 @@
                                     <forceAutogen>true</forceAutogen>
                                     <verbose>true</verbose>
                                     <configureArgs>
-                                        <arg>CPPFLAGS=-I/usr/local/GraphicsMagick-1.3.23
-                                            -I/usr/local/include/GraphicsMagick
-                                        </arg>
+                                        <arg>CPPFLAGS=-I/usr/local/GraphicsMagick-1.3.23 -I/usr/local/include/GraphicsMagick</arg>
                                         <arg>LDFLAGS=-L/usr/local/lib -L/usr/local/Cellar/freetype/2.6_1/lib</arg>
-                                        <arg>LIBS=-lGraphicsMagick -lfreetype -ljpeg -lpng12 -lX11 -lz -lm -lgomp
-                                            -lpthread
-                                        </arg>
+                                        <arg>LIBS=-lGraphicsMagick -lfreetype -ljpeg -lpng12 -lX11 -lz -lm -lgomp -lpthread</arg>
                                         <arg>--enable-shared</arg>
                                     </configureArgs>
                                 </configuration>

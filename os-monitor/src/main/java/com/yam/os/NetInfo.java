@@ -11,13 +11,13 @@ public class NetInfo implements Serializable {
 
     private String name;
 
-    private long rBytes;
+    private long rbytes;
 
-    private long rPackets;
+    private long rpackets;
 
-    private long rErrs;
+    private long rerrs;
 
-    private long rDrop;
+    private long rdrop;
 
     private long fifo;
 
@@ -27,13 +27,13 @@ public class NetInfo implements Serializable {
 
     private long multicast;
 
-    private long tBytes;
+    private long tbytes;
 
-    private long tPackets;
+    private long tpackets;
 
-    private long tErrs;
+    private long terrs;
 
-    private long tDrop;
+    private long tdrop;
 
     public String getName() {
         return name;
@@ -43,36 +43,36 @@ public class NetInfo implements Serializable {
         this.name = name;
     }
 
-    public long getrBytes() {
-        return rBytes;
+    public long getRbytes() {
+        return rbytes;
     }
 
-    public void setrBytes(long rBytes) {
-        this.rBytes = rBytes;
+    public void setRbytes(long rbytes) {
+        this.rbytes = rbytes;
     }
 
-    public long getrPackets() {
-        return rPackets;
+    public long getRpackets() {
+        return rpackets;
     }
 
-    public void setrPackets(long rPackets) {
-        this.rPackets = rPackets;
+    public void setRpackets(long rpackets) {
+        this.rpackets = rpackets;
     }
 
-    public long getrErrs() {
-        return rErrs;
+    public long getRerrs() {
+        return rerrs;
     }
 
-    public void setrErrs(long rErrs) {
-        this.rErrs = rErrs;
+    public void setRerrs(long rerrs) {
+        this.rerrs = rerrs;
     }
 
-    public long getrDrop() {
-        return rDrop;
+    public long getRdrop() {
+        return rdrop;
     }
 
-    public void setrDrop(long rDrop) {
-        this.rDrop = rDrop;
+    public void setRdrop(long rdrop) {
+        this.rdrop = rdrop;
     }
 
     public long getFifo() {
@@ -107,35 +107,35 @@ public class NetInfo implements Serializable {
         this.multicast = multicast;
     }
 
-    public long gettBytes() {
-        return tBytes;
+    public long getTbytes() {
+        return tbytes;
     }
 
-    public void settBytes(long tBytes) {
-        this.tBytes = tBytes;
+    public void setTbytes(long tbytes) {
+        this.tbytes = tbytes;
     }
 
-    public long gettPackets() {
-        return tPackets;
+    public long getTpackets() {
+        return tpackets;
     }
 
-    public void settPackets(long tPackets) {
-        this.tPackets = tPackets;
+    public void setTpackets(long tpackets) {
+        this.tpackets = tpackets;
     }
 
-    public long gettErrs() {
-        return tErrs;
+    public long getTerrs() {
+        return terrs;
     }
 
-    public void settErrs(long tErrs) {
-        this.tErrs = tErrs;
+    public void setTerrs(long terrs) {
+        this.terrs = terrs;
     }
 
-    public long gettDrop() {
-        return tDrop;
+    public long getTdrop() {
+        return tdrop;
     }
 
-    public void settDrop(long tDrop) {
-        this.tDrop = tDrop;
+    public void setTdrop(long tdrop) {
+        this.tdrop = tdrop;
     }
 }
